@@ -10,9 +10,12 @@
 
 #include "Block.hpp"
 
+
 class Chunk;
 class MapTile{
 public:
+    ~MapTile();
+    void init(Chunk* c, int localyX, int localyY);
     Block block;
     Chunk* chunk;
     int localX, localY;

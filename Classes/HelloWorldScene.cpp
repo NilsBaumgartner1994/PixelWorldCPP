@@ -45,7 +45,9 @@ bool HelloWorld::init()
         return false;
     }
 
-    TileWorld world;
+    TileWorld world = TileWorld("Default");
+    
+    std::cout << "Now Deletions are ok" << std::endl;
     
     VarHolder test;
     test.setX(3);

@@ -13,7 +13,9 @@
 class TileWorld;
 class Chunk{
 public:
-    MapTile tile[32][32];
+    ~Chunk();
+    Chunk(TileWorld* world, int globalX, int globalY);
+    MapTile tiles[32][32];
     TileWorld* world;
     int globalX, globalY;
 };

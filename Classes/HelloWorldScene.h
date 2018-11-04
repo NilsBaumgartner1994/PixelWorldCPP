@@ -37,4 +37,5 @@ public:
     
 private:
     cocos2d::Sprite* sprite;
+    
 };

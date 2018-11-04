@@ -13,7 +13,6 @@ class Block{
     MapTile* tile;
     cocos2d::Sprite* sprite;
     int id;
-    
 };
 
 #endif /* Block_hpp */
