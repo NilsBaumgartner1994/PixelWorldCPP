@@ -35,6 +35,14 @@
 		491A723C218C11CC0026B3F4 /* Veyron.png in Resources */ = {isa = PBXBuildFile; fileRef = 491A7239218C11CC0026B3F4 /* Veyron.png */; };
 		492C677D218DBF45005CAC19 /* tiles in Resources */ = {isa = PBXBuildFile; fileRef = 492C677B218DBF45005CAC19 /* tiles */; };
 		492C677E218DBF45005CAC19 /* tiles in Resources */ = {isa = PBXBuildFile; fileRef = 492C677B218DBF45005CAC19 /* tiles */; };
+		494E9577218F6B82005ABD5F /* MapTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 494E9575218F6B82005ABD5F /* MapTile.cpp */; };
+		494E9578218F6B82005ABD5F /* MapTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 494E9575218F6B82005ABD5F /* MapTile.cpp */; };
+		494E957B218F6BA1005ABD5F /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 494E9579218F6BA1005ABD5F /* Block.cpp */; };
+		494E957C218F6BA1005ABD5F /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 494E9579218F6BA1005ABD5F /* Block.cpp */; };
+		494E957F218F6D58005ABD5F /* Chunk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 494E957D218F6D58005ABD5F /* Chunk.cpp */; };
+		494E9580218F6D58005ABD5F /* Chunk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 494E957D218F6D58005ABD5F /* Chunk.cpp */; };
+		494E9583218F6DA3005ABD5F /* TileWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 494E9581218F6DA3005ABD5F /* TileWorld.cpp */; };
+		494E9584218F6DA3005ABD5F /* TileWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 494E9581218F6DA3005ABD5F /* TileWorld.cpp */; };
 		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
 		503AE10517EB98FF00D1A890 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 503AE10317EB98FF00D1A890 /* main.cpp */; };
 		503AE11B17EB9C5A00D1A890 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503AE11A17EB9C5A00D1A890 /* IOKit.framework */; };
@@ -127,10 +135,14 @@
 		46880B8719C43A87006E1F66 /* HelloWorldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorldScene.h; sourceTree = "<group>"; };
 		491A7239218C11CC0026B3F4 /* Veyron.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Veyron.png; sourceTree = "<group>"; };
 		492C677B218DBF45005CAC19 /* tiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tiles; sourceTree = "<group>"; };
-		492C6797218DC9B1005CAC19 /* Block.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Block.cpp; sourceTree = "<group>"; };
-		492C6798218DC9B1005CAC19 /* MapTile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MapTile.cpp; sourceTree = "<group>"; };
-		492C6799218DC9B1005CAC19 /* TileWorld.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TileWorld.cpp; sourceTree = "<group>"; };
-		492C679A218DC9B1005CAC19 /* Chunk.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Chunk.cpp; sourceTree = "<group>"; };
+		494E9575218F6B82005ABD5F /* MapTile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MapTile.cpp; sourceTree = "<group>"; };
+		494E9576218F6B82005ABD5F /* MapTile.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MapTile.hpp; sourceTree = "<group>"; };
+		494E9579218F6BA1005ABD5F /* Block.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Block.cpp; sourceTree = "<group>"; };
+		494E957A218F6BA1005ABD5F /* Block.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Block.hpp; sourceTree = "<group>"; };
+		494E957D218F6D58005ABD5F /* Chunk.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Chunk.cpp; sourceTree = "<group>"; };
+		494E957E218F6D58005ABD5F /* Chunk.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Chunk.hpp; sourceTree = "<group>"; };
+		494E9581218F6DA3005ABD5F /* TileWorld.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TileWorld.cpp; sourceTree = "<group>"; };
+		494E9582218F6DA3005ABD5F /* TileWorld.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TileWorld.hpp; sourceTree = "<group>"; };
 		496191B4218CD1070055E1F8 /* VarHolder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VarHolder.cpp; sourceTree = "<group>"; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		503AE0F717EB97AB00D1A890 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -298,6 +310,7 @@
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */,
 				46880B8719C43A87006E1F66 /* HelloWorldScene.h */,
+				494E9585218F6F28005ABD5F /* physics */,
 				492C677F218DC301005CAC19 /* world */,
 				491A7245218C4FB80026B3F4 /* inputs */,
 			);
@@ -316,12 +329,23 @@
 		492C677F218DC301005CAC19 /* world */ = {
 			isa = PBXGroup;
 			children = (
-				492C6797218DC9B1005CAC19 /* Block.cpp */,
-				492C679A218DC9B1005CAC19 /* Chunk.cpp */,
-				492C6798218DC9B1005CAC19 /* MapTile.cpp */,
-				492C6799218DC9B1005CAC19 /* TileWorld.cpp */,
+				494E9575218F6B82005ABD5F /* MapTile.cpp */,
+				494E9576218F6B82005ABD5F /* MapTile.hpp */,
+				494E9581218F6DA3005ABD5F /* TileWorld.cpp */,
+				494E9582218F6DA3005ABD5F /* TileWorld.hpp */,
+				494E9579218F6BA1005ABD5F /* Block.cpp */,
+				494E957A218F6BA1005ABD5F /* Block.hpp */,
+				494E957D218F6D58005ABD5F /* Chunk.cpp */,
+				494E957E218F6D58005ABD5F /* Chunk.hpp */,
 			);
 			path = world;
+			sourceTree = "<group>";
+		};
+		494E9585218F6F28005ABD5F /* physics */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = physics;
 			sourceTree = "<group>";
 		};
 		503AE0F517EB97AB00D1A890 /* Icons */ = {
@@ -486,9 +510,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				494E9577218F6B82005ABD5F /* MapTile.cpp in Sources */,
+				494E957B218F6BA1005ABD5F /* Block.cpp in Sources */,
 				1AF87B781F6F77F7007BE51C /* AppController.mm in Sources */,
+				494E957F218F6D58005ABD5F /* Chunk.cpp in Sources */,
 				1AF87B8B1F6F782A007BE51C /* RootViewController.mm in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				494E9583218F6DA3005ABD5F /* TileWorld.cpp in Sources */,
 				1AF87B8A1F6F7822007BE51C /* main.m in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 			);
@@ -498,9 +526,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				494E9578218F6B82005ABD5F /* MapTile.cpp in Sources */,
+				494E9580218F6D58005ABD5F /* Chunk.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
+				494E9584218F6DA3005ABD5F /* TileWorld.cpp in Sources */,
+				494E957C218F6BA1005ABD5F /* Block.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

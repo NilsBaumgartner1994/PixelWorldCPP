@@ -24,7 +24,7 @@
 
 #include "HelloWorldScene.h"
 #include "inputs/VarHolder.cpp"
-#include "world/TileWorld.cpp"
+#include "world/TileWorld.hpp"
 #include <iostream>
 #include <string>
 
@@ -44,8 +44,8 @@ bool HelloWorld::init()
     {
         return false;
     }
-    
-    TileWorld world = TileWorld();
+
+    TileWorld world;
     
     VarHolder test;
     test.setX(3);
@@ -60,13 +60,13 @@ bool HelloWorld::init()
 
 void HelloWorld::update(float delta){
     
-    std::cout << "Hallo";
+//std::cout << "Hallo";
     
     auto position = sprite->getPosition();
     position.x -= 250 * delta;
     if (position.x  < 0 - (sprite->getBoundingBox().size.width / 2)){
         position.x = this->getBoundingBox().getMaxX() + sprite->getBoundingBox().size.width/2;
-    } else {
-        sprite->setPosition(position);
     }
+    
+    sprite->setPosition(position);
 }
