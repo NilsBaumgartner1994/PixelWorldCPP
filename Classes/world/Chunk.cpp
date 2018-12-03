@@ -12,19 +12,27 @@ using namespace std;
 
 
 Chunk::~Chunk(){
-    //cout << "Chunk is being deleted: " << this->globalX << " " << this->globalY << endl;
+    cout << "Chunk is being deleted: " << this->globalX << " " << this->globalY << endl;
 }
 
-Chunk::Chunk(TileWorld* world, int globalX, int globalY){
+Chunk::Chunk(TileWorld* world, int globalX, int globalY, std::unordered_map <std::string, std::unique_ptr<cocos2d::Sprite>>* map){
     this->world = world;
     this->globalX = globalX;
     this->globalY = globalY;
     
     for(int x=0; x<32; x++){
         for(int y=0; y<32; y++){
-            this->tiles[x][y].init(this, x, y);
+            this->tiles[x][y].init(this, x, y, map);
         }
     }
     
     cout << "Specific Chunk Constructor" << endl;
+}
+
+void Chunk::addTilesToRender(cocos2d::Layer* layer, std::unordered_map <std::string, std::unique_ptr<cocos2d::Sprite>>* map){
+    for(int x=0; x<32; x++){
+        for(int y=0; y<32; y++){
+            tiles[x][y].addTilesToRender(layer, map);
+        }
+    }
 }

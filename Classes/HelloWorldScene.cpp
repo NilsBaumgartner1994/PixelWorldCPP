@@ -24,7 +24,7 @@
 
 #include "HelloWorldScene.h"
 #include "inputs/VarHolder.cpp"
-#include "world/TileWorld.hpp"
+
 #include <iostream>
 #include <string>
 
@@ -44,17 +44,26 @@ bool HelloWorld::init()
     {
         return false;
     }
-
-    TileWorld world = TileWorld("Default");
+    
+    
+    this->sprites.insert(std::make_pair("grass", std::unique_ptr<Sprite>(Sprite::create("tiles/grass.png"))));
+    
+    world = std::unique_ptr<TileWorld>(new TileWorld("Default",&sprites));
+    world->addTilesToRender(this,&sprites);
+    
+    camera = std::unique_ptr<CameraController>(new CameraController());
+    camera->init(this->getBoundingBox().getMaxX(), this->getBoundingBox().getMaxY());
     
     std::cout << "Now Deletions are ok" << std::endl;
     
     VarHolder test;
     test.setX(3);
     
+    /**
     sprite = Sprite::create("tiles/grass.png");
     sprite->setPosition(this->getBoundingBox().getMidX(), this->getBoundingBox().getMidY());
     this->addChild(sprite, 0);
+     */
     
     this->scheduleUpdate();
     return true;
@@ -63,7 +72,10 @@ bool HelloWorld::init()
 void HelloWorld::update(float delta){
     
 //std::cout << "Hallo";
+    this->removeAllChildren();
+    world->addTilesToRender(this,&sprites);
     
+    /**
     auto position = sprite->getPosition();
     position.x -= 250 * delta;
     if (position.x  < 0 - (sprite->getBoundingBox().size.width / 2)){
@@ -71,4 +83,5 @@ void HelloWorld::update(float delta){
     }
     
     sprite->setPosition(position);
+     */
 }

@@ -8,6 +8,11 @@
 #ifndef Human_hpp
 #define Human_hpp
 
-#include <stdio.h>
+class Human{
+public:
+    ~Human();
+    void init(int globalX, int globalY);
+    int globalX, globalY;
+};
 
 #endif /* Human_hpp */

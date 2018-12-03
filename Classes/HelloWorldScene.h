@@ -25,6 +25,8 @@
 #pragma once
 
 #include "cocos2d.h"
+#include "world/TileWorld.hpp"
+#include "camera/CameraController.hpp"
 
 class HelloWorld : public cocos2d::Layer
 {
@@ -36,6 +38,9 @@ public:
     void update(float) override;
     
 private:
+    int width, height;
     cocos2d::Sprite* sprite;
-    
+    std::unique_ptr<TileWorld> world;
+    std::unique_ptr<CameraController> camera;
+    std::unordered_map <std::string, std::unique_ptr<cocos2d::Sprite>> sprites;
 };
