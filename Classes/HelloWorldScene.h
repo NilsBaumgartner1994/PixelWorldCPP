@@ -43,4 +43,22 @@ private:
     std::unique_ptr<TileWorld> world;
     CameraController* camera;
     std::unordered_map <std::string, std::unique_ptr<cocos2d::Sprite>> sprites;
+    
+    
+    
+    void menuCloseCallback(cocos2d::Ref* pSender);
+    
+    
+    cocos2d::Size visibleSize;
+    
+    // touch events
+    bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event);
+    void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event);
+    void onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event);
+    void onTouchCancelled(cocos2d::Touch *touch, cocos2d::Event *event);
+    
+    bool isTouchDown;
+    
+    float initialTouchPos[2];
+    float currentTouchPos[2];
 };

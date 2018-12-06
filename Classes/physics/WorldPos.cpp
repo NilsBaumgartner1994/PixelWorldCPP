@@ -86,3 +86,13 @@ void WorldPos::calcScreenPos(int* screenPos, CameraController* camera){
     int fractionCorrectionY = (yPosMultXPart * oldXF / 4 + yPosMultYPart * oldYF / 2);
     screenPos[1] = relativeXYForY * tileHeightHalf + tileCorrection + heightCorrection + fractionCorrectionY;
 }
+
+
+void WorldPos::add(int x, int xFrac, int y, int yFrac, int z, int zFrac){
+    this->x += x;
+    this->xFrac += xFrac;
+    this->y += y;
+    this->yFrac += yFrac;
+    this->z += z;
+    this->zFrac += zFrac;
+}

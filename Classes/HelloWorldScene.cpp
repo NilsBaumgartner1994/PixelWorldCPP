@@ -65,6 +65,24 @@ bool HelloWorld::init()
     this->addChild(sprite, 0);
      */
     
+    
+    visibleSize = Director::getInstance()->getVisibleSize();
+    
+    auto listener = EventListenerTouchOneByOne::create();
+    listener->setSwallowTouches(true);
+    
+    listener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
+    listener->onTouchMoved = CC_CALLBACK_2(HelloWorld::onTouchMoved, this);
+    listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
+    listener->onTouchCancelled = CC_CALLBACK_2(HelloWorld::onTouchCancelled, this);
+    
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+    
+    isTouchDown = false;
+    
+    initialTouchPos[0] = 0;
+    initialTouchPos[1] = 0;
+    
     this->scheduleUpdate();
     return true;
 }
@@ -75,13 +93,78 @@ void HelloWorld::update(float delta){
     this->removeAllChildren();
     world->addTilesToRender(this,&sprites,camera);
     
-    /**
-    auto position = sprite->getPosition();
-    position.x -= 250 * delta;
-    if (position.x  < 0 - (sprite->getBoundingBox().size.width / 2)){
-        position.x = this->getBoundingBox().getMaxX() + sprite->getBoundingBox().size.width/2;
+    if (true == isTouchDown)
+    {
+        if (initialTouchPos[0] - currentTouchPos[0] > visibleSize.width * 0.05)
+        {
+            CCLOG("SWIPED LEFT");
+            this->camera->pos->add(-1, 0, 1, 0, 0, 0);
+            
+            isTouchDown = false;
+        }
+        else if (initialTouchPos[0] - currentTouchPos[0] < - visibleSize.width * 0.05)
+        {
+            CCLOG("SWIPED RIGHT");
+            this->camera->pos->add(1, 0, -1, 0, 0, 0);
+            
+            isTouchDown = false;
+        }
+        else if (initialTouchPos[1] - currentTouchPos[1] > visibleSize.width * 0.05)
+        {
+            CCLOG("SWIPED DOWN");
+            this->camera->pos->add(-1, 0, -1, 0, 0, 0);
+            
+            isTouchDown = false;
+        }
+        else if (initialTouchPos[1] - currentTouchPos[1] < - visibleSize.width * 0.05)
+        {
+            CCLOG("SWIPED UP");
+            this->camera->pos->add(1, 0, 1, 0, 0, 0);
+            
+            
+            isTouchDown = false;
+        }
     }
+}
+
+bool HelloWorld::onTouchBegan(Touch *touch, Event *event)
+{
+    initialTouchPos[0] = touch->getLocation().x;
+    initialTouchPos[1] = touch->getLocation().y;
+    currentTouchPos[0] = touch->getLocation().x;
+    currentTouchPos[1] = touch->getLocation().y;
     
-    sprite->setPosition(position);
-     */
+    isTouchDown = true;
+    
+    return true;
+}
+
+void HelloWorld::onTouchMoved(Touch *touch, Event *event)
+{
+    currentTouchPos[0] = touch->getLocation().x;
+    currentTouchPos[1] = touch->getLocation().y;
+}
+
+void HelloWorld::onTouchEnded(Touch *touch, Event *event)
+{
+    isTouchDown = false;
+}
+
+void HelloWorld::onTouchCancelled(Touch *touch, Event *event)
+{
+    onTouchEnded(touch, event);
+}
+
+void HelloWorld::menuCloseCallback(Ref* pSender)
+{
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
+    MessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");
+    return;
+#endif
+    
+    Director::getInstance()->end();
+    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    exit(0);
+#endif
 }

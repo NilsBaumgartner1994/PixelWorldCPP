@@ -18,6 +18,7 @@ public:
     int x,y,xFrac,yFrac,z,zFrac;
     void init(int x, int y, int xFrac, int yFrac, int z, int zFrac);
     void calcScreenPos(int* screenPos, CameraController* camera);
+    void add(int x, int xFrac, int y, int yFrac, int z, int zFrac);
 };
 
 #endif /* WorldPos_hpp */
