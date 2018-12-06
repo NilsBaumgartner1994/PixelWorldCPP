@@ -41,6 +41,6 @@ private:
     int width, height;
     cocos2d::Sprite* sprite;
     std::unique_ptr<TileWorld> world;
-    std::unique_ptr<CameraController> camera;
+    CameraController* camera;
     std::unordered_map <std::string, std::unique_ptr<cocos2d::Sprite>> sprites;
 };

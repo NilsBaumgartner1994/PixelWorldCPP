@@ -9,12 +9,15 @@
 #define WorldPos_hpp
 
 #include <tuple>
+#include "../camera/CameraController.hpp"
+
+class CameraController;
 
 class WorldPos{
 public:
     int x,y,xFrac,yFrac,z,zFrac;
     void init(int x, int y, int xFrac, int yFrac, int z, int zFrac);
-    void calcScreenPos(int* screenPos);
+    void calcScreenPos(int* screenPos, CameraController* camera);
 };
 
 #endif /* WorldPos_hpp */

@@ -24,6 +24,6 @@ std::string TileWorld::getName(){
     return this->name;
 }
 
-void TileWorld::addTilesToRender(cocos2d::Layer* layer, std::unordered_map <std::string, std::unique_ptr<cocos2d::Sprite>>* map){
-    chunks["0,0"]->addTilesToRender(layer, map);
+void TileWorld::addTilesToRender(cocos2d::Layer* layer, std::unordered_map <std::string, std::unique_ptr<cocos2d::Sprite>>* map, CameraController* camera){
+    chunks["0,0"]->addTilesToRender(layer, map, camera);
 }

@@ -23,14 +23,14 @@ void MapTile::init(Chunk* chunk, int localX, int localY, std::unordered_map <std
     this->block.pos.init(localX, localY, 0, 0, 0,0);
 }
 
-void MapTile::addTilesToRender(cocos2d::Layer* layer, std::unordered_map <std::string, std::unique_ptr<cocos2d::Sprite>>* map){
+void MapTile::addTilesToRender(cocos2d::Layer* layer, std::unordered_map <std::string, std::unique_ptr<cocos2d::Sprite>>* map, CameraController* camera){
     this->block.init(1,map);
     int xP = this->block.sprite->getBoundingBox().getMaxX()*this->localX;
     int yP = this->block.sprite->getBoundingBox().getMaxY()*this->localY;
     
     this->block.sprite->setPosition(layer->getBoundingBox().getMidX()-xP, layer->getBoundingBox().getMidY()-yP);
     int screenPos[2] = {0,0};
-    this->block.pos.calcScreenPos(screenPos);
+    this->block.pos.calcScreenPos(screenPos,camera);
     this->block.sprite->setPosition(screenPos[0],screenPos[1]);
     layer->addChild(this->block.sprite,0);
 }

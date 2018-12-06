@@ -14,6 +14,7 @@
 #include <unordered_map>
 #include "../entitiys/Human.hpp"
 
+class CameraController;
 class TileWorld{
 public:
     ~TileWorld();
@@ -23,7 +24,7 @@ public:
     std::string getName();
     Human human;
     
-    void addTilesToRender(cocos2d::Layer* layer, std::unordered_map <std::string, std::unique_ptr<cocos2d::Sprite>>* map);
+    void addTilesToRender(cocos2d::Layer* layer, std::unordered_map <std::string, std::unique_ptr<cocos2d::Sprite>>* map, CameraController* camera);
 };
 
 #endif /* TileWorld_hpp */

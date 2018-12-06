@@ -29,10 +29,10 @@ Chunk::Chunk(TileWorld* world, int globalX, int globalY, std::unordered_map <std
     cout << "Specific Chunk Constructor" << endl;
 }
 
-void Chunk::addTilesToRender(cocos2d::Layer* layer, std::unordered_map <std::string, std::unique_ptr<cocos2d::Sprite>>* map){
-    for(int x=0; x<32; x++){
-        for(int y=0; y<32; y++){
-            tiles[x][y].addTilesToRender(layer, map);
+void Chunk::addTilesToRender(cocos2d::Layer* layer, std::unordered_map <std::string, std::unique_ptr<cocos2d::Sprite>>* map, CameraController* camera){
+    for(int x=31; x>=0; x--){
+        for(int y=31; y>=0; y--){
+            tiles[x][y].addTilesToRender(layer, map, camera);
         }
     }
 }

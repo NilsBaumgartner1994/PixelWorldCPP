@@ -16,27 +16,28 @@ void WorldPos::init(int x, int y, int xFrac, int yFrac, int z, int zFrac){
     this->zFrac = zFrac;
 }
 
-void WorldPos::calcScreenPos(int* screenPos){
-    int width = 480;
-    int height = 320;
-    int spriteWidth = 128;
+void WorldPos::calcScreenPos(int* screenPos, CameraController* camera){
+    int width = camera->width;
+    int height = camera->height;
+    
+    int spriteWidth = 64*2;
     int spriteHeight = 64;
     int tileWidthHalf = spriteWidth/2;
-    int tileHeightHalf = spriteHeight;
+    int tileHeightHalf = spriteHeight/2;
     
     int globalY = y;
     int globalX = x;
     int globalYFrac = yFrac;
     int globalXFrac = xFrac;
     
-    int relativeY = (globalY - 0);
-    int relativeX = (globalX - 0);
+    int relativeY = (globalY - camera->pos->y);
+    int relativeX = (globalX - camera->pos->x);
     
-    int oldYF = globalYFrac - 0;
-    int oldXF = globalXFrac - 0;
+    int oldYF = globalYFrac - camera->pos->yFrac;
+    int oldXF = globalXFrac - camera->pos->xFrac;
     
     //int spriteCorrection = scaleZoom(-sprite.getRegionWidth() / 2);
-    int spriteCorrection = spriteWidth / 2;
+    int spriteCorrection = -spriteWidth / 2 / 2;
     int widthCorrection = width / 2;
     int tileCorrection = -spriteHeight;
     int heightCorrection = height / 2;
@@ -84,5 +85,4 @@ void WorldPos::calcScreenPos(int* screenPos){
     int relativeXYForY = (yPosMultXPart * relativeX + yPosMultYPart * relativeY);
     int fractionCorrectionY = (yPosMultXPart * oldXF / 4 + yPosMultYPart * oldYF / 2);
     screenPos[1] = relativeXYForY * tileHeightHalf + tileCorrection + heightCorrection + fractionCorrectionY;
-    
 }

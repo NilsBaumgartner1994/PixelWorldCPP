@@ -11,6 +11,7 @@
 #include "MapTile.hpp"
 #include "cocos2d.h"
 
+class CameraController;
 class TileWorld;
 class Chunk{
 public:
@@ -19,7 +20,7 @@ public:
     MapTile tiles[32][32];
     TileWorld* world;
     int globalX, globalY;
-    void addTilesToRender(cocos2d::Layer* layer, std::unordered_map <std::string, std::unique_ptr<cocos2d::Sprite>>* map);
+    void addTilesToRender(cocos2d::Layer* layer, std::unordered_map <std::string, std::unique_ptr<cocos2d::Sprite>>* map, CameraController* camera);
 };
 
 #endif /* Chunk_hpp */

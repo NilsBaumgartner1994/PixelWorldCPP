@@ -7,11 +7,15 @@
 
 #ifndef CameraController_hpp
 #define CameraController_hpp
+#include "../physics/WorldPos.hpp"
 
+class MapTile;
+class WorldPos;
 class CameraController{
 public:
     ~CameraController();
     void init(int width, int height);
+    std::unique_ptr<WorldPos> pos;
     int width, height;
 };
 

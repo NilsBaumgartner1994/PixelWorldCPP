@@ -48,11 +48,11 @@ bool HelloWorld::init()
     
     this->sprites.insert(std::make_pair("grass", std::unique_ptr<Sprite>(Sprite::create("tiles/grass.png"))));
     
-    world = std::unique_ptr<TileWorld>(new TileWorld("Default",&sprites));
-    world->addTilesToRender(this,&sprites);
-    
-    camera = std::unique_ptr<CameraController>(new CameraController());
+    camera = new CameraController();
     camera->init(this->getBoundingBox().getMaxX(), this->getBoundingBox().getMaxY());
+    
+    world = std::unique_ptr<TileWorld>(new TileWorld("Default",&sprites));
+    world->addTilesToRender(this,&sprites,camera);
     
     std::cout << "Now Deletions are ok" << std::endl;
     
@@ -73,7 +73,7 @@ void HelloWorld::update(float delta){
     
 //std::cout << "Hallo";
     this->removeAllChildren();
-    world->addTilesToRender(this,&sprites);
+    world->addTilesToRender(this,&sprites,camera);
     
     /**
     auto position = sprite->getPosition();

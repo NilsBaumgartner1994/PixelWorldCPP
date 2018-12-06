@@ -10,7 +10,9 @@
 
 #include "Block.hpp"
 #include "cocos2d.h"
+#include "../camera/CameraController.hpp"
 
+class CameraController;
 class Chunk;
 class MapTile{
 public:
@@ -19,7 +21,7 @@ public:
     Block block;
     Chunk* chunk;
     int localX, localY;
-    void addTilesToRender(cocos2d::Layer* layer, std::unordered_map <std::string, std::unique_ptr<cocos2d::Sprite>>* map);
+    void addTilesToRender(cocos2d::Layer* layer, std::unordered_map <std::string, std::unique_ptr<cocos2d::Sprite>>* map, CameraController* camera);
 };
 
 #endif /* MapTile_hpp */
