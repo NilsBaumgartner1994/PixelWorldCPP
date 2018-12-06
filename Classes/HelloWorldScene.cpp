@@ -45,11 +45,16 @@ bool HelloWorld::init()
         return false;
     }
     
-    
     this->sprites.insert(std::make_pair("grass", std::unique_ptr<Sprite>(Sprite::create("tiles/grass.png"))));
     
+    visibleSize = Director::getInstance()->getVisibleSize();
+    
+    auto winSize = Director::getInstance()->getWinSize();
+    this->width = winSize.width;
+    this->height = winSize.height;
+    
     camera = new CameraController();
-    camera->init(this->getBoundingBox().getMaxX(), this->getBoundingBox().getMaxY());
+    camera->init(this->width, this->height);
     
     world = std::unique_ptr<TileWorld>(new TileWorld("Default",&sprites));
     world->addTilesToRender(this,&sprites,camera);
@@ -64,9 +69,6 @@ bool HelloWorld::init()
     sprite->setPosition(this->getBoundingBox().getMidX(), this->getBoundingBox().getMidY());
     this->addChild(sprite, 0);
      */
-    
-    
-    visibleSize = Director::getInstance()->getVisibleSize();
     
     auto listener = EventListenerTouchOneByOne::create();
     listener->setSwallowTouches(true);
@@ -93,33 +95,46 @@ void HelloWorld::update(float delta){
     this->removeAllChildren();
     world->addTilesToRender(this,&sprites,camera);
     
+    
+    
+    std::string text = "Width" + std::to_string(this->world->chunks["0,0"]->tiles[0][0].block.sprite->getBoundingBox().size.width);
+    label = Label::createWithSystemFont(text, "Arial", 40);
+    label->setPosition(visibleSize.width/2,visibleSize.height/2);
+    this->addChild(label,1);
+    
     if (true == isTouchDown)
     {
-        if (initialTouchPos[0] - currentTouchPos[0] > visibleSize.width * 0.05)
+        float xDiff = initialTouchPos[0] - currentTouchPos[0];
+        float yDiff = initialTouchPos[1] - currentTouchPos[1];
+        float dist = visibleSize.width * 0.05;
+        
+        std::cout << "xDiff: " << std::to_string(xDiff) << " yDiff: "+std::to_string(yDiff) << " dist: " << std::to_string(dist) << std::endl;
+        
+        if (xDiff > dist && yDiff > dist)
         {
-            CCLOG("SWIPED LEFT");
-            this->camera->pos->add(-1, 0, 1, 0, 0, 0);
+            CCLOG("SWIPED Down-LEFT");
+            this->camera->pos->add(-1, 0, 0, 0, 0, 0);
             
             isTouchDown = false;
         }
-        else if (initialTouchPos[0] - currentTouchPos[0] < - visibleSize.width * 0.05)
+        else if (xDiff < -dist && yDiff < -dist)
         {
-            CCLOG("SWIPED RIGHT");
-            this->camera->pos->add(1, 0, -1, 0, 0, 0);
+            CCLOG("SWIPED UP-RIGHT");
+            this->camera->pos->add(1, 0, 0, 0, 0, 0);
             
             isTouchDown = false;
         }
-        else if (initialTouchPos[1] - currentTouchPos[1] > visibleSize.width * 0.05)
+        else if (xDiff > dist && yDiff < -dist)
         {
-            CCLOG("SWIPED DOWN");
-            this->camera->pos->add(-1, 0, -1, 0, 0, 0);
+            CCLOG("SWIPED UP-LEFT");
+            this->camera->pos->add(0, 0, 1, 0, 0, 0);
             
             isTouchDown = false;
         }
-        else if (initialTouchPos[1] - currentTouchPos[1] < - visibleSize.width * 0.05)
+        else if (xDiff < -dist && yDiff > dist)
         {
-            CCLOG("SWIPED UP");
-            this->camera->pos->add(1, 0, 1, 0, 0, 0);
+            CCLOG("SWIPED Down-Right");
+            this->camera->pos->add(0, 0, -1, 0, 0, 0);
             
             
             isTouchDown = false;

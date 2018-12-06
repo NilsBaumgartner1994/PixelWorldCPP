@@ -44,7 +44,7 @@ private:
     CameraController* camera;
     std::unordered_map <std::string, std::unique_ptr<cocos2d::Sprite>> sprites;
     
-    
+    cocos2d::Label* label;
     
     void menuCloseCallback(cocos2d::Ref* pSender);
     

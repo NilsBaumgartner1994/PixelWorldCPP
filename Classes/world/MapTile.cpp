@@ -30,7 +30,7 @@ void MapTile::addTilesToRender(cocos2d::Layer* layer, std::unordered_map <std::s
     
     this->block.sprite->setPosition(layer->getBoundingBox().getMidX()-xP, layer->getBoundingBox().getMidY()-yP);
     int screenPos[2] = {0,0};
-    this->block.pos.calcScreenPos(screenPos,camera);
+    this->block.pos.calcScreenPos(screenPos,camera,this->block.sprite->getBoundingBox().size.width,this->block.sprite->getBoundingBox().size.height);
     this->block.sprite->setPosition(screenPos[0],screenPos[1]);
     layer->addChild(this->block.sprite,0);
 }

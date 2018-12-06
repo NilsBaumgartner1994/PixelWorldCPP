@@ -16,14 +16,14 @@ void WorldPos::init(int x, int y, int xFrac, int yFrac, int z, int zFrac){
     this->zFrac = zFrac;
 }
 
-void WorldPos::calcScreenPos(int* screenPos, CameraController* camera){
+void WorldPos::calcScreenPos(int* screenPos, CameraController* camera, int spriteWidth, int spriteHeight){
     int width = camera->width;
     int height = camera->height;
     
-    int spriteWidth = 64*2;
-    int spriteHeight = 64;
+    //int spriteWidth = 64*2;
+    //int spriteHeight = 64;
     int tileWidthHalf = spriteWidth/2;
-    int tileHeightHalf = spriteHeight/2;
+    int tileHeightHalf = spriteHeight/2/2;
     
     int globalY = y;
     int globalX = x;
