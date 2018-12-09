@@ -95,9 +95,19 @@ void HelloWorld::update(float delta){
     this->removeAllChildren();
     world->addTilesToRender(this,&sprites,camera);
     
+    std::string text = "Test";
     
+    // /**
+    auto sprite = cocos2d::Sprite::create("tiles/grass.png");
     
-    std::string text = "Width" + std::to_string(this->world->chunks["0,0"]->tiles[0][0].block.sprite->getBoundingBox().size.width);
+    std::string boundingBox = "Width" + std::to_string(sprite->getBoundingBox().size.width);
+    std::string rawWidth = "Width" + std::to_string(sprite->getContentSize().width);
+    std::string textRect = "Width" + std::to_string(sprite->getTextureRect().size.width);
+    
+    text = boundingBox + "\n" + rawWidth + "\n" + textRect;
+    
+     // */
+    
     label = Label::createWithSystemFont(text, "Arial", 40);
     label->setPosition(visibleSize.width/2,visibleSize.height/2);
     this->addChild(label,1);
